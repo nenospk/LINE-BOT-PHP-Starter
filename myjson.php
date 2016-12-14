@@ -17,12 +17,12 @@ if(file_put_contents($file, json_encode($json))) {
 
 $file = "tracking.txt";
 $json = json_decode(file_get_contents($file), true);
-if (in_array('A1', $json)) {
+if (array_key_exists("A1", $json)) {
     echo "A1 EXIST";
 } else {
   echo "A1 NOT EXIST";
 }
-if (in_array('A4', $json)) {
+if (in_array("A4", $json)) {
     echo "A4 EXIST";
 } else {
   echo "A4 NOT EXIST";
