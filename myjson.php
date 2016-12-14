@@ -8,5 +8,9 @@ $json = json_decode(file_get_contents($file), true);
 
 $json[$user] = array("first" => $first, "last" => $last);
 
-file_put_contents($file, json_encode($json));
+if(file_put_contents($file, json_encode($json))) {
+  $file = "tracking.txt";
+  $json = json_decode(file_get_contents($file), true);
+  echo $json . "OK";
+}
 ?>
