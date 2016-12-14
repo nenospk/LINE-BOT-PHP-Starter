@@ -1,4 +1,4 @@
-A<?php
+<?php
 $orderId = "A3";
 $fullName = "Suppakit";
 $trackNo = "234561";
