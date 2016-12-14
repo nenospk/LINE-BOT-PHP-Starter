@@ -28,13 +28,14 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			$messages = [
+				{
 				'type' => 'text',
 				'text' => $my_respond
-			];
-			
-			$messages_2 = [
+				},{
 				'type' => 'text',
-				'text' => 'ขอบคุณครับ'
+				'text' => $my_respond
+				}
+				
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -44,17 +45,12 @@ if (!is_null($events['events'])) {
 				'messages' => [$messages],
 			];
 			$post = json_encode($data);
-			$data_2 = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages_2],
-			];
-			$post_2 = json_encode($data_2);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
 			$ch = curl_init($url);
 			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-			curl_setopt($ch, CURLOPT_POSTFIELDS, $post,$post_2);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
 			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 			$result = curl_exec($ch);
