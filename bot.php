@@ -31,11 +31,7 @@ if (!is_null($events['events'])) {
 				{
 				'type' => 'text',
 				'text' => $my_respond
-				},{
-				'type' => 'text',
-				'text' => $my_respond
 				}
-				
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
