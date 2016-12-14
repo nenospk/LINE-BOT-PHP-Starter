@@ -17,30 +17,31 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 			
 			$find_key = $text;
-// SEARCH
-$file = "tracking.txt";
-$json = json_decode(file_get_contents($file), true);
-if (array_key_exists($find_key, $json)) {
-  $my_respond = "Name : " . $json[$find_key]["name"] . ", Tracking : " . $json[$find_key]["tracking"];
-} else {
-  $my_respond = "ไม่พบข้อมูล : " . $find_key;
-}
+			// SEARCH
+			$file = "tracking.txt";
+			$json = json_decode(file_get_contents($file), true);
+			if (array_key_exists($find_key, $json)) {
+  			$my_respond = "Name : " . $json[$find_key]["name"] . ", Tracking : " . $json[$find_key]["tracking"];
+			} else {
+  			$my_respond = "ไม่พบข้อมูล : " . $find_key;
+			}
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
 				'text' => $my_respond
-			],
-			[
+			];
+			
+			$messages_2 = [
 				'type' => 'text',
-				'text' => "ขอบคุณครับ"
+				'text' => 'ขอบคุณครับ'
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$messages],[$messages_2],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
