@@ -21,6 +21,7 @@ if (!is_null($events['events'])) {
 			$file = "http://sodaorder.com/sodasupport/tracking.txt";
 			$json =iconv("tis-620","utf-8",$json);
 			//$json = json_decode(file_get_contents($file), true);
+			
 			if (array_key_exists($find_key, $json)) {
   			$my_respond = "Name : " . $json[$find_key]["name"] . ", Tracking : " . $json[$find_key]["tracking"];
 			} else {
