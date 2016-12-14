@@ -30,6 +30,10 @@ if (array_key_exists($find_key, $json)) {
 			$messages = [
 				'type' => 'text',
 				'text' => $my_respond
+			],
+			[
+				'type' => 'text',
+				'text' => "ขอบคุณครับ"
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
