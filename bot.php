@@ -1,10 +1,6 @@
 <?php
 $access_token = 'e9wZ3HziGn+Uj6NGYN1O6vpvZf3jCRPO2kGa0/knH6k9DsOE1AJJGaJ+oBLCJjwHVu4lW2+hMFacime2HEk8JtrW5KhPZ0ZdRuA4RVMqkC70eT0UyVd3pEYhZizkiyKAqrR2ooZWaTd1WT/R/y2RUAdB04t89/1O/w1cDnyilFU=';
 
-$myfile = fopen("test.txt", "r") or die("Unable to open file!");
-$test = fread($myfile,filesize("test.txt"));
-fclose($myfile);
-
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -19,11 +15,21 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
+			
+			$find_key = $text;
+// SEARCH
+$file = "tracking.txt";
+$json = json_decode(file_get_contents($file), true);
+if (array_key_exists($find_key, $json)) {
+  $my_respond = "Name : " . $json[$find_key]["name"] . ", Tracking : " . $json[$find_key]["tracking"];
+} else {
+  $my_respond = "ไม่พบข้อมูล : " . $find_key;
+}
 
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $test
+				'text' => $my_respond
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
