@@ -1,6 +1,5 @@
 <?php
 $access_token = 'e9wZ3HziGn+Uj6NGYN1O6vpvZf3jCRPO2kGa0/knH6k9DsOE1AJJGaJ+oBLCJjwHVu4lW2+hMFacime2HEk8JtrW5KhPZ0ZdRuA4RVMqkC70eT0UyVd3pEYhZizkiyKAqrR2ooZWaTd1WT/R/y2RUAdB04t89/1O/w1cDnyilFU=';
-
 // Get POST body content
 $content = file_get_contents('php://input');
 // Parse JSON
@@ -16,8 +15,8 @@ if (!is_null($events['events'])) {
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
-			$find_key = $text;
 			// SEARCH
+			$find_key = $text;
 			$file = "http://sodaorder.com/sodasupport/tracking.txt";
 			$json = json_decode(file_get_contents($file), true);
 			if (array_key_exists($find_key, $json)) {
@@ -55,4 +54,3 @@ if (!is_null($events['events'])) {
 	}
 }
 echo "OK";
-?>
