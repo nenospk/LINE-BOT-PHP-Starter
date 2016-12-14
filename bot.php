@@ -2,7 +2,7 @@
 $access_token = 'e9wZ3HziGn+Uj6NGYN1O6vpvZf3jCRPO2kGa0/knH6k9DsOE1AJJGaJ+oBLCJjwHVu4lW2+hMFacime2HEk8JtrW5KhPZ0ZdRuA4RVMqkC70eT0UyVd3pEYhZizkiyKAqrR2ooZWaTd1WT/R/y2RUAdB04t89/1O/w1cDnyilFU=';
 
 $myfile = fopen("test.txt", "r") or die("Unable to open file!");
-$test_text = $myfile,filesize("webdictionary.txt");
+$test = fread($myfile,filesize("test.txt"));
 fclose($myfile);
 
 // Get POST body content
@@ -23,9 +23,8 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $test_text
+				'text' => $test
 			];
-			
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
