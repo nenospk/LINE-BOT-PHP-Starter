@@ -22,7 +22,7 @@ if (array_key_exists("A1", $json)) {
 } else {
   echo "A1 NOT EXIST";
 }
-if (in_array("A4", $json)) {
+if (array_key_exists("A4", $json)) {
     echo "A4 EXIST";
 } else {
   echo "A4 NOT EXIST";
