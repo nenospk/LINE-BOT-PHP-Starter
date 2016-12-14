@@ -2,12 +2,10 @@
 $orderId = "A3";
 $fullName = "Suppakit";
 $trackNo = "234561";
-
+// INPUT
 $file = "tracking.txt";
 $json = json_decode(file_get_contents($file), true);
-
 $json[$orderId] = array("name" => $fullName, "tracking" => $trackNo);
-
 if(file_put_contents($file, json_encode($json))) {
   $file = "tracking.txt";
   $json = json_decode(file_get_contents($file), true);
@@ -15,16 +13,13 @@ if(file_put_contents($file, json_encode($json))) {
   echo $json["A3"]["name"];
 }
 
+$find_key = "A3";
+// SEARCH
 $file = "tracking.txt";
 $json = json_decode(file_get_contents($file), true);
-if (array_key_exists("A1", $json)) {
-    echo "A1 EXIST";
+if (array_key_exists($find_key, $json)) {
+  echo $find_key . " EXIST";
 } else {
-  echo "A1 NOT EXIST";
-}
-if (array_key_exists("A4", $json)) {
-    echo "A4 EXIST";
-} else {
-  echo "A4 NOT EXIST";
+  echo $find_key . " NOT EXIST";
 }
 ?>
