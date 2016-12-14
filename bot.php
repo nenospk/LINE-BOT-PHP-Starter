@@ -1,4 +1,5 @@
 <?php
+header('Content-Type: text/html; charset=utf-8');
 $access_token = 'e9wZ3HziGn+Uj6NGYN1O6vpvZf3jCRPO2kGa0/knH6k9DsOE1AJJGaJ+oBLCJjwHVu4lW2+hMFacime2HEk8JtrW5KhPZ0ZdRuA4RVMqkC70eT0UyVd3pEYhZizkiyKAqrR2ooZWaTd1WT/R/y2RUAdB04t89/1O/w1cDnyilFU=';
 // Get POST body content
 $content = file_get_contents('php://input');
